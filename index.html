@@ -1,553 +1,659 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Untuk Sabila 🩵</title>
+<title>Untuk Kamu 🩵</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
     min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     overflow-x: hidden;
     overflow-y: auto;
+    font-family: "Segoe UI", sans-serif;
 
-    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #dff7ff,
+        #cceeff,
+        #e9faff
+    );
 
-    background:
-        linear-gradient(
-            135deg,
-            #8fc9e8,
-            #b8dff2,
-            #a9bfe3
-        );
+    color: #4f7182;
 }
-
 
 /* =========================
-   KOTAK UTAMA
-   ========================= */
+   RINTIK BIRU
+========================= */
 
-.container {
-    width: 90%;
-    max-width: 500px;
-
-    text-align: center;
-
-    background:
-        rgba(255, 255, 255, 0.45);
-
-    padding:
-        35px 25px;
-
-    border-radius:
-        30px;
-
-    box-shadow:
-        0 15px 40px
-        rgba(80, 150, 180, 0.20);
-
-    position: relative;
-
-    z-index: 5;
-
-    backdrop-filter:
-        blur(3px);
-
-    -webkit-backdrop-filter:
-        blur(3px);
+.rain {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
 }
 
-
-/* =========================
-   EMOJI AWAL
-   ========================= */
-
-.emoji {
-    font-size: 65px;
-
-    animation:
-        bounce
-        1.8s
-        infinite;
+.drop {
+    position: absolute;
+    top: -30px;
+    width: 2px;
+    height: 20px;
+    background: rgba(80, 180, 220, 0.35);
+    border-radius: 20px;
+    animation: rainFall linear infinite;
 }
 
-
-/* =========================
-   JUDUL
-   ========================= */
-
-h1 {
-    color: #3184b5;
-
-    margin:
-        15px 0;
-
-    font-size:
-        30px;
-}
-
-
-/* =========================
-   SUBTITLE
-   ========================= */
-
-.subtitle {
-    color: #607d8b;
-
-    font-size:
-        16px;
-
-    margin-bottom:
-        25px;
-}
-
-
-/* =========================
-   TOMBOL
-   ========================= */
-
-button {
-    border:
-        none;
-
-    background:
-        linear-gradient(
-            135deg,
-            #358fbe,
-            #62b8df
-        );
-
-    color:
-        white;
-
-    padding:
-        14px 28px;
-
-    border-radius:
-        50px;
-
-    font-size:
-        16px;
-
-    font-weight:
-        bold;
-
-    cursor:
-        pointer;
-
-    box-shadow:
-        0 7px 18px
-        rgba(50, 130, 180, 0.30);
-
-    transition:
-        0.3s;
-}
-
-button:hover {
-    transform:
-        scale(1.08);
-}
-
-
-/* =========================
-   AMPLOP SETELAH DIBUKA
-   ========================= */
-
-.opened-envelope {
-    display:
-        none;
-
-    font-size:
-        70px;
-
-    margin-bottom:
-        20px;
-
-    animation:
-        envelopeOpen
-        0.8s
-        ease;
-}
-
-
-/* =========================
-   PESAN
-   ========================= */
-
-#message {
-    display:
-        none;
-
-    margin-top:
-        25px;
-
-    color:
-        #455a64;
-
-    line-height:
-        1.8;
-
-    font-size:
-        17px;
-
-    animation:
-        fadeIn
-        1s
-        ease;
-}
-
-
-/* =========================
-   RINTIK HUJAN
-   ========================= */
-
-.heart {
-    position:
-        fixed;
-
-    top:
-        -40px;
-
-    left:
-        0;
-
-    font-size:
-        18px;
-
-    opacity:
-        0;
-
-    z-index:
-        2;
-
-    pointer-events:
-        none;
-
-    animation:
-        rainHeart
-        linear
-        forwards;
-}
-
-
-/* =========================
-   TEKS BAWAH
-   ========================= */
-
-.small {
-    margin-top:
-        20px;
-
-    color:
-        #78909c;
-
-    font-size:
-        12px;
-}
-
-
-/* =========================
-   ANIMASI EMOJI
-   ========================= */
-
-@keyframes bounce {
-
-    0%, 100% {
-        transform:
-            translateY(0);
-    }
-
-    50% {
-        transform:
-            translateY(-12px);
-    }
-}
-
-
-/* =========================
-   ANIMASI PESAN
-   ========================= */
-
-@keyframes fadeIn {
-
+@keyframes rainFall {
     from {
-        opacity:
-            0;
+        transform: translateY(-30px);
+        opacity: 0;
+    }
 
-        transform:
-            translateY(15px);
+    15% {
+        opacity: 1;
     }
 
     to {
-        opacity:
-            1;
-
-        transform:
-            translateY(0);
+        transform: translateY(110vh);
+        opacity: 0;
     }
 }
 
-
 /* =========================
-   ANIMASI AMPLOP
-   ========================= */
+   HATI BIRU BACKGROUND
+========================= */
 
-@keyframes envelopeOpen {
-
-    0% {
-        opacity:
-            0;
-
-        transform:
-            scale(0.5)
-            rotate(-10deg);
-    }
-
-    60% {
-        transform:
-            scale(1.15)
-            rotate(5deg);
-    }
-
-    100% {
-        opacity:
-            1;
-
-        transform:
-            scale(1)
-            rotate(0deg);
-    }
+.bg-hearts {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
 }
 
+.bg-heart {
+    position: absolute;
+    bottom: -40px;
+    color: #73cbed;
+    opacity: 0;
+    animation: floatHeart linear forwards;
+}
 
-/* =========================
-   ANIMASI HUJAN
-   ========================= */
-
-@keyframes rainHeart {
+@keyframes floatHeart {
 
     0% {
-        transform:
-            translateY(-40px)
-            rotate(0deg);
-
-        opacity:
-            0;
+        transform: translateY(0) scale(.7);
+        opacity: 0;
     }
 
-    10% {
-        opacity:
-            0.75;
+    15% {
+        opacity: .55;
     }
 
-    85% {
-        opacity:
-            0.75;
+    80% {
+        opacity: .55;
     }
 
     100% {
         transform:
-            translateY(110vh)
-            rotate(180deg);
-
-        opacity:
-            0;
+            translateY(-110vh)
+            scale(1.2)
+            rotate(15deg);
+        opacity: 0;
     }
 }
-
 
 /* =========================
-   TAMPILAN HP
-   ========================= */
+   CONTAINER
+========================= */
 
-@media (max-width: 480px) {
-
-    .container {
-        width: 92%;
-
-        padding:
-            30px 20px;
-    }
-
-    .emoji {
-        font-size:
-            58px;
-    }
-
-    h1 {
-        font-size:
-            27px;
-    }
-
-    .subtitle {
-        font-size:
-            15px;
-    }
-
-    #message {
-        font-size:
-            16px;
-
-        line-height:
-            1.75;
-    }
-
+.container {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
 }
 
+.page {
+    width: calc(100% - 30px);
+    max-width: 430px;
+    text-align: center;
+    animation: pageIn .6s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================
+   TEXT
+========================= */
+
+h1 {
+    margin-bottom: 10px;
+    color: #4cafd1;
+    font-size: 30px;
+}
+
+h2 {
+    color: #4cafd1;
+    font-size: 25px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn {
+    margin-top: 20px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(
+        135deg,
+        #63c8ec,
+        #77aeea
+    );
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow:
+        0 8px 20px rgba(60,160,210,.25);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn:active {
+    transform: scale(.94);
+}
+
+/* =========================
+   GAME
+========================= */
+
+.game-info {
+    margin-bottom: 8px;
+}
+
+.score {
+    font-size: 18px;
+    font-weight: bold;
+    color: #419dbf;
+}
+
+.game-area {
+    position: relative;
+    width: 100%;
+    height: 430px;
+    margin-top: 15px;
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.45),
+            rgba(160,220,245,.35)
+        );
+
+    border: 2px solid rgba(255,255,255,.75);
+
+    box-shadow:
+        0 12px 30px rgba(70,150,190,.18);
+}
+
+/* Garis tanah */
+
+.game-ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 18px;
+
+    background: rgba(80,170,210,.25);
+}
+
+/* =========================
+   HATI JATUH
+========================= */
+
+.falling-heart {
+    position: absolute;
+    top: -50px;
+    font-size: 35px;
+    user-select: none;
+    pointer-events: none;
+
+    filter:
+        drop-shadow(
+            0 3px 5px
+            rgba(40,140,190,.2)
+        );
+}
+
+/* =========================
+   KERANJANG
+========================= */
+
+.basket {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+
+    width: 90px;
+    height: 45px;
+
+    transform: translateX(-50%);
+
+    font-size: 55px;
+    line-height: 45px;
+
+    cursor: grab;
+    user-select: none;
+
+    touch-action: none;
+
+    filter:
+        drop-shadow(
+            0 5px 5px
+            rgba(50,130,170,.2)
+        );
+}
+
+.basket:active {
+    cursor: grabbing;
+}
+
+/* =========================
+   INSTRUKSI
+========================= */
+
+.instruction {
+    font-size: 14px;
+    color: #6795a7;
+    margin-top: 10px;
+}
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success-heart {
+    font-size: 80px;
+    animation: heartBeat 1s infinite;
+}
+
+@keyframes heartBeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope {
+    position: relative;
+    width: 240px;
+    height: 160px;
+    margin: 30px auto;
+    cursor: pointer;
+}
+
+.env-back {
+    position: absolute;
+    inset: 0;
+    background: #8ed8f2;
+    border-radius: 8px;
+}
+
+.env-letter {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 10px;
+    height: 110px;
+
+    background: white;
+    border-radius: 5px;
+
+    transition: .8s;
+
+    z-index: 2;
+}
+
+.env-front {
+    position: absolute;
+    inset: 0;
+
+    background: #6cc6e9;
+
+    clip-path:
+        polygon(
+            0 45%,
+            50% 100%,
+            100% 45%,
+            100% 100%,
+            0 100%
+        );
+
+    z-index: 4;
+}
+
+.env-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 75%;
+
+    background: #a9e5f7;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 70%
+        );
+
+    transform-origin: top;
+
+    transition: .8s;
+
+    z-index: 5;
+}
+
+.envelope.open .env-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .env-letter {
+    transform: translateY(-80px);
+    z-index: 6;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message-card {
+    background: rgba(255,255,255,.75);
+
+    padding: 25px 20px;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(70,140,170,.18);
+
+    border: 1px solid
+        rgba(255,255,255,.8);
+}
+
+.message-card h2 {
+    color: #4cafd1;
+}
+
+.message {
+    text-align: left;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+.signature {
+    margin-top: 20px;
+    text-align: right;
+
+    color: #4cafd1;
+    font-weight: bold;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px) {
+
+    .game-area {
+        height: 430px;
+    }
+
+    .basket {
+        width: 85px;
+    }
+
+    .falling-heart {
+        font-size: 34px;
+    }
+}
 </style>
-
 </head>
 
 
 <body>
-
-
-<!-- =========================
-     MUSIK
-     ========================= -->
-
-<audio
-    id="sound"
-    preload="auto"
-    loop>
-
-    <source
-        src="lagu_40_detik.mp3"
-        type="audio/mpeg">
-
+<audio id="sound" preload="auto" loop>
+    <source src="lagu_40_detik.mp3" type="audio/mpeg">
 </audio>
 
+<!-- RINTIK -->
+<div class="rain" id="rain"></div>
 
-<!-- =========================
-     KOTAK UTAMA
-     ========================= -->
+<!-- HATI BACKGROUND -->
+<div class="bg-hearts" id="bgHearts"></div>
+
 
 <div class="container">
 
+    <!-- =====================
+         HALAMAN AWAL
+    ====================== -->
 
-    <!-- =========================
-         BAGIAN SEBELUM DIBUKA
-         ========================= -->
+    <div class="page" id="startPage">
 
-    <div id="opening">
-
-        <div class="emoji">
+        <div style="font-size:75px;">
             💌
         </div>
 
-        <h1>
-            Hallo, Sabila!
-        </h1>
+        <h1>Hallo kamu! 🩵</h1>
 
-        <div class="subtitle">
-            Ada sesuatu yang sebenarnya
+        <p>
+            Ada sesuatu yang sebenarnya<br>
             mau aku bilang...
-        </div>
+        </p>
 
-        <button
-            id="openButton"
-            onclick="openMessage()">
-
-            Buka Pesannya 🙈
-
+        <button class="btn" onclick="startGame()">
+            💌 Buka Pesan
         </button>
 
     </div>
 
 
-    <!-- =========================
-         AMPLOP SETELAH DIBUKA
-         ========================= -->
+    <!-- =====================
+         GAME
+    ====================== -->
 
-    <div
-        id="openedEnvelope"
-        class="opened-envelope">
+    <div class="page hidden" id="gamePage">
 
-        💌
+        <h2>🩵 Sebelum baca pesannya...</h2>
 
-    </div>
-
-
-    <!-- =========================
-         ISI PESAN
-         ========================= -->
-
-    <div id="message">
-
-        <p>
-            Hai Bil, ada beberapa hal yang mau aku sampein sama kamu.
+        <p class="game-info">
+            Tangkap dulu <b>5 hati biru!</b> 💙
         </p>
 
-        <p>
-            Pertama, makasih ya udah mau temenan sama aku sampai
-            semester akhir ini. Banyak cerita dan momen yang sudah
-            kita dan juga temen lain jalanin. Ga kerasa udah beres
-            juga semester akhir ini yang dar der dor.
-        </p>
+        <div class="score">
+            💙 Tertangkap:
+            <span id="score">0</span>/5
+        </div>
 
-        <p>
-            Yang kedua, aku mau mintaa maaf kalo aku ada salah,
-            ntah itu dari perbuatan atau dari tingkah laku yang
-            bikin kamu sakit hati.
-        </p>
+        <div class="game-area" id="gameArea">
 
-        <p>
-            Aku juga mau mintaa maaf kalo misal aku kurang baik
-            jadi temen kamu, tidak sesuai ekspektasi kamu.
-        </p>
+            <div class="game-ground"></div>
 
-        <p>
-            Aku ngerasa kalo aku sama kamu kurang deket banget.
-            Aku juga jarang cerita perihal problem atau kabar baik
-            yang aku hadapi, juga aku juga emang jarang curhat si hehe.
-        </p>
+            <div
+                class="basket"
+                id="basket">
+                🧺
+            </div>
 
-        <p>
-            Aku seneng temenan kamu, jalanin kuliah bareng
-            sampai akhirnya kita sama-sama lulus tepat waktu.
-        </p>
+        </div>
 
-        <p>
-            Tetep menjadi Bila yang menyenangkan yaa. 🩵
-        </p>
-
-        <p>
-            Dimanapun, kapanpun serta bagaimana pun nanti,
-            semoga Tuhan selalu menyertaimu.
-        </p>
-
-        <p>
-            Bye Bil, see u 👋🏻
-        </p>
-
-        <div style="font-size:30px;">
-            🩵 🌸 🥰
+        <div class="instruction">
+            👆 Geser keranjang untuk menangkap hati
         </div>
 
     </div>
 
 
-    <!-- =========================
-         NAMA
-         ========================= -->
+    <!-- =====================
+         BERHASIL
+    ====================== -->
 
-    <div class="small">
-        dari Reni Intan Nuraini ✨
+    <div class="page hidden" id="successPage">
+
+        <div class="success-heart">
+            🩵
+        </div>
+
+        <h2>Yeay! Berhasil! 🎉</h2>
+
+        <p>
+            Kamu berhasil menangkap<br>
+            5 hati biru! 🥹💙
+        </p>
+
+        <p>
+            Sekarang kamu boleh<br>
+            membuka pesannya 💌
+        </p>
+
+        <button class="btn" onclick="showEnvelope()">
+            💌 Buka Pesan
+        </button>
+
     </div>
 
+
+    <!-- =====================
+         AMPLOP
+    ====================== -->
+
+    <div class="page hidden" id="envelopePage">
+
+        <h2>💌 Ada pesan untuk kamu...</h2>
+
+        <p>
+            Klik amplopnya ya 🥺
+        </p>
+
+        <div
+            class="envelope"
+            id="envelope"
+            onclick="openEnvelope()">
+
+            <div class="env-back"></div>
+
+            <div class="env-letter"></div>
+
+            <div class="env-flap"></div>
+
+            <div class="env-front"></div>
+
+        </div>
+
+        <p id="envelopeText">
+            🩵 Klik amplop untuk membuka
+        </p>
+
+    </div>
+
+
+    <!-- =====================
+         PESAN
+    ====================== -->
+
+    <div class="page hidden" id="messagePage">
+
+        <div class="message-card">
+
+            <div style="font-size:55px;">
+                💌
+            </div>
+
+            <h2>Untuk Kamu 🩵</h2>
+
+            <div class="message">
+
+Hallo kamu! 🥺🩵
+
+Ada sesuatu yang sebenarnya
+sudah lama ingin aku bilang.
+
+Terima kasih karena sudah hadir
+dan menjadi seseorang yang begitu
+berarti.
+
+Mungkin kata-kata ini sederhana,
+tapi aku benar-benar berharap
+kamu tahu...
+
+Kamu itu spesial. 🥹🩵
+
+Semoga setelah membaca pesan ini,
+kamu tersenyum sedikit ya.
+
+Karena senyummu juga salah satu
+hal yang aku suka. 💙
+
+            </div>
+
+            <div class="signature">
+                Dari seseorang yang menyayangimu 🩵
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -555,238 +661,405 @@ button:hover {
 <script>
 
 /* =========================
-   STATUS HUJAN
-   ========================= */
+   RINTIK
+========================= */
 
-let rainStarted = false;
+const rain =
+    document.getElementById("rain");
 
+for(let i = 0; i < 55; i++){
 
-/* =========================
-   BUKA PESAN
-   ========================= */
+    const drop =
+        document.createElement("div");
 
-function openMessage() {
+    drop.className = "drop";
 
+    drop.style.left =
+        Math.random() * 100 + "%";
 
-    /* Hilangkan pembuka */
+    drop.style.animationDuration =
+        (2 + Math.random() * 3) + "s";
 
-    document
-        .getElementById("opening")
-        .style.display = "none";
+    drop.style.animationDelay =
+        Math.random() * 5 + "s";
 
-
-    /* Tampilkan amplop */
-
-    document
-        .getElementById("openedEnvelope")
-        .style.display = "block";
-
-
-    /* Tampilkan pesan */
-
-    document
-        .getElementById("message")
-        .style.display = "block";
-
-
-    /* Ubah tombol */
-
-    document
-        .getElementById("openButton")
-        .innerHTML =
-            "Pesannya sudah dibuka 🩵";
-
-
-    /* =========================
-       PUTAR MUSIK
-       ========================= */
-
-    const sound =
-        document.getElementById("sound");
-
-    sound.currentTime = 0;
-
-
-    /*
-       Musik akan diputar
-       dan otomatis mengulang
-       karena audio menggunakan loop.
-    */
-
-    const playPromise =
-        sound.play();
-
-
-    if (playPromise !== undefined) {
-
-        playPromise.catch(
-            function(error) {
-
-                console.log(
-                    "Audio tidak dapat diputar:",
-                    error
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =========================
-       MULAI HUJAN
-       ========================= */
-
-    if (!rainStarted) {
-
-        startRain();
-
-        rainStarted = true;
-
-    }
-
+    rain.appendChild(drop);
 }
 
 
 /* =========================
-   MEMBUAT SATU RINTIK
-   ========================= */
+   HATI BACKGROUND
+========================= */
 
-function createHeart() {
+const bgHearts =
+    document.getElementById("bgHearts");
 
+function createBackgroundHeart(){
 
     const heart =
         document.createElement("div");
 
+    heart.className = "bg-heart";
 
-    heart.className =
-        "heart";
-
-
-    /* Emoji rintik */
-
-    const hearts = [
-
-        "💙",
-        "🩵",
-        "💧",
-        "💙",
-        "🩵",
-        "💧",
-        "💙"
-
-    ];
-
-
-    /* Pilih emoji acak */
-
-    heart.innerHTML =
-        hearts[
-            Math.floor(
-                Math.random()
-                * hearts.length
-            )
-        ];
-
-
-    /* Posisi horizontal acak */
+    heart.innerText = "🩵";
 
     heart.style.left =
-        Math.random() * 100 + "vw";
-
-
-    /* Ukuran acak */
+        Math.random() * 100 + "%";
 
     heart.style.fontSize =
-        (12 + Math.random() * 14)
-        + "px";
-
-
-    /* Kecepatan jatuh */
-
-    const duration =
-        5 + Math.random() * 5;
-
+        (12 + Math.random() * 18) + "px";
 
     heart.style.animationDuration =
-        duration + "s";
+        (6 + Math.random() * 7) + "s";
+
+    bgHearts.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 14000);
+}
+
+setInterval(
+    createBackgroundHeart,
+    500
+);
 
 
-    /* Sedikit gerakan horizontal */
+/* =========================
+   HALAMAN
+========================= */
 
-    heart.style.transform =
-        "translateX(" +
-        (Math.random() * 20 - 10) +
-        "px)";
+function hidePages(){
 
-
-    /* Masukkan ke halaman */
-
-    document.body.appendChild(
-        heart
-    );
-
-
-    /* Hapus setelah selesai */
-
-    setTimeout(
-        function() {
-
-            heart.remove();
-
-        },
-        (duration + 1) * 1000
-    );
-
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.add("hidden");
+        });
 }
 
 
 /* =========================
-   HUJAN TERUS MENERUS
-   ========================= */
+   GAME
+========================= */
 
-function startRain() {
+const gameArea =
+    document.getElementById("gameArea");
+
+const basket =
+    document.getElementById("basket");
+
+let score = 0;
+
+let gameRunning = false;
+
+let spawnTimer;
+
+let animationFrame;
 
 
-    /* Rintik awal */
+/* =========================
+   MULAI GAME
+========================= */
 
-    for (
-        let i = 0;
-        i < 6;
-        i++
-    ) {
+function startGame(){
 
-        setTimeout(
-            function() {
+    hidePages();
 
-                createHeart();
+    document
+        .getElementById("gamePage")
+        .classList.remove("hidden");
 
-            },
-            i * 350
+    score = 0;
+
+    document
+        .getElementById("score")
+        .innerText = score;
+
+    gameRunning = true;
+
+    basket.style.left = "50%";
+
+    spawnHeart();
+
+    spawnTimer =
+        setInterval(
+            spawnHeart,
+            650
+        );
+}
+
+
+/* =========================
+   BUAT HATI JATUH
+========================= */
+
+function spawnHeart(){
+
+    if(!gameRunning) return;
+
+    const heart =
+        document.createElement("div");
+
+    heart.className =
+        "falling-heart";
+
+    heart.innerText = "💙";
+
+    const maxX =
+        gameArea.clientWidth - 40;
+
+    heart.style.left =
+        Math.random() * maxX + "px";
+
+    gameArea.appendChild(heart);
+
+    let y = -45;
+
+    const speed =
+        2.5 + Math.random() * 2;
+
+    function fall(){
+
+        if(!heart.parentElement){
+            return;
+        }
+
+        y += speed;
+
+        heart.style.top =
+            y + "px";
+
+        checkCatch(
+            heart,
+            y
         );
 
+        if(y < gameArea.clientHeight){
+
+            requestAnimationFrame(fall);
+
+        } else {
+
+            heart.remove();
+
+        }
     }
 
+    requestAnimationFrame(fall);
+}
 
-    /*
-       Setelah itu rintik
-       muncul terus-menerus.
-    */
 
-    setInterval(
-        function() {
+/* =========================
+   CEK KERANJANG
+========================= */
 
-            createHeart();
+function checkCatch(
+    heart,
+    y
+){
 
-        },
-        300
-    );
+    if(!heart.parentElement){
+        return;
+    }
 
+    const heartX =
+        parseFloat(heart.style.left);
+
+    const heartWidth =
+        35;
+
+    const basketX =
+        basket.offsetLeft;
+
+    const basketWidth =
+        basket.offsetWidth;
+
+    const basketTop =
+        gameArea.clientHeight - 75;
+
+    if(
+
+        y + 30 >= basketTop &&
+
+        heartX + heartWidth >= basketX &&
+
+        heartX <= basketX + basketWidth
+
+    ){
+
+        heart.remove();
+
+        score++;
+
+        document
+            .getElementById("score")
+            .innerText = score;
+
+        if(score >= 5){
+
+            finishGame();
+        }
+    }
+}
+
+
+/* =========================
+   SELESAI GAME
+========================= */
+
+function finishGame(){
+
+    gameRunning = false;
+
+    clearInterval(spawnTimer);
+
+    document
+        .querySelectorAll(".falling-heart")
+        .forEach(h => h.remove());
+
+    setTimeout(() => {
+
+        hidePages();
+
+        document
+            .getElementById("successPage")
+            .classList.remove("hidden");
+
+    }, 400);
+}
+
+
+/* =========================
+   GERAK KERANJANG
+   MOUSE
+========================= */
+
+gameArea.addEventListener(
+    "mousemove",
+    function(e){
+
+        if(!gameRunning) return;
+
+        moveBasket(e.clientX);
+    }
+);
+
+
+/* =========================
+   SENTUH HP
+========================= */
+
+gameArea.addEventListener(
+    "touchmove",
+    function(e){
+
+        if(!gameRunning) return;
+
+        e.preventDefault();
+
+        const touch =
+            e.touches[0];
+
+        moveBasket(touch.clientX);
+
+    },
+    { passive:false }
+);
+
+
+/* =========================
+   POSISI KERANJANG
+========================= */
+
+function moveBasket(clientX){
+
+    const rect =
+        gameArea.getBoundingClientRect();
+
+    let x =
+        clientX - rect.left;
+
+    const half =
+        basket.offsetWidth / 2;
+
+    x =
+        x - half;
+
+    const max =
+        gameArea.clientWidth -
+        basket.offsetWidth;
+
+    x =
+        Math.max(
+            0,
+            Math.min(x, max)
+        );
+
+    basket.style.left =
+        x + "px";
+
+    basket.style.transform =
+        "none";
+}
+
+
+/* =========================
+   TAMPIL AMPLOP
+========================= */
+
+function showEnvelope(){
+
+    hidePages();
+
+    document
+        .getElementById("envelopePage")
+        .classList.remove("hidden");
+}
+
+
+/* =========================
+   BUKA AMPLOP
+========================= */
+
+function openEnvelope(){
+
+    const envelope =
+        document.getElementById("envelope");
+
+    if(
+        envelope.classList.contains("open")
+    ){
+        return;
+    }
+
+    envelope.classList.add("open");
+    const sound =
+    document.getElementById("sound");
+
+sound.currentTime = 0;
+
+sound.play().catch(function(error) {
+    console.log("Musik tidak dapat diputar:", error);
+});
+
+    document
+        .getElementById("envelopeText")
+        .innerText =
+        "🩵 Pesannya sudah dibuka...";
+
+    setTimeout(() => {
+
+        hidePages();
+
+        document
+            .getElementById("messagePage")
+            .classList.remove("hidden");
+
+    }, 1500);
 }
 
 </script>
 
-
 </body>
-
 </html>
