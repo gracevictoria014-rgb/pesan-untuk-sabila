@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu 🩵</title>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+        overflow-y: auto;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(
+            135deg,
+            #8fc9e8,
+            #b8dff2,
+            #a9bfe3
+        );
+    }
+
+    .container {
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.55);
+        padding: 35px 25px;
+        border-radius: 30px;
+        box-shadow:
+            0 15px 40px rgba(80, 150, 180, 0.2);
+        position: relative;
+        z-index: 2;
+    }
+
+    .emoji {
+        font-size: 65px;
+        animation: bounce 1.8s infinite;
+    }
+
+    h1 {
+        color: #3184b5;
+        margin: 15px 0;
+        font-size: 30px;
+    }
+
+    .subtitle {
+        color: #607d8b;
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    button {
+        border: none;
+        background:
+            linear-gradient(
+                135deg,
+                #358fbe,
+                #62b8df
+            );
+        color: white;
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow:
+            0 7px 18px
+            rgba(50, 130, 180, 0.3);
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.08);
+    }
+
+    .opened-envelope {
+        display: none;
+        font-size: 70px;
+        margin-bottom: 20px;
+        animation:
+            envelopeOpen
+            0.8s
+            ease;
+    }
+
+    #message {
+        display: none;
+        margin-top: 25px;
+        color: #455a64;
+        line-height: 1.8;
+        font-size: 17px;
+        animation:
+            fadeIn
+            1s
+            ease;
+    }
+
+    .heart {
+        position: fixed;
+        top: -40px;
+        font-size: 18px;
+        opacity: 0.7;
+        z-index: 1;
+        pointer-events: none;
+        animation:
+            rainHeart
+            linear
+            forwards;
+    }
+
+    .small {
+        margin-top: 20px;
+        color: #78909c;
+        font-size: 12px;
+    }
+
+    @keyframes bounce {
+
+        0%, 100% {
+            transform:
+                translateY(0);
+        }
+
+        50% {
+            transform:
+                translateY(-12px);
+        }
+    }
+
+    @keyframes fadeIn {
+
+        from {
+            opacity: 0;
+            transform:
+                translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+            transform:
+                translateY(0);
+        }
+    }
+
+    @keyframes envelopeOpen {
+
+        0% {
+            opacity: 0;
+            transform:
+                scale(0.5)
+                rotate(-10deg);
+        }
+
+        60% {
+            transform:
+                scale(1.15)
+                rotate(5deg);
+        }
+
+        100% {
+            opacity: 1;
+            transform:
+                scale(1)
+                rotate(0deg);
+        }
+    }
+
+    @keyframes rainHeart {
+
+        from {
+            transform:
+                translateY(-40px)
+                rotate(0deg);
+            opacity: 0;
+        }
+
+        15% {
+            opacity: 0.7;
+        }
+
+        to {
+            transform:
+                translateY(110vh)
+                rotate(180deg);
+            opacity: 0;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+<audio id="sound" preload="auto">
+    <source
+        src="sound_40_detik.mp3"
+        type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+    <div id="opening">
+
+        <div class="emoji">
+            💌
+        </div>
+
+        <h1>
+            Hallo, Sabila!
+        </h1>
+
+        <div class="subtitle">
+            Ada sesuatu yang sebenarnya
+            mau aku bilang...
+        </div>
+
+        <button onclick="openMessage()">
+            Buka Pesannya 🙈
+        </button>
+
+    </div>
+
+    <div
+        id="openedEnvelope"
+        class="opened-envelope">
+
+        💌
+
+    </div>
+
+    <div id="message">
+
+        <p>
+            Hai kamu 👋🏻
+        </p>
+
+        <p>
+            Aku cuma mau bilang kalo aku bangga punya kamu
+
+            <br>
+
+            <b>
+                Jangan lupa jaga kesehatan ya
+            </b>
+        </p>
+
+        <p>
+            Mungkin aku belum bisa menjadi pasangan
+            yang sempurna untukmu, aku sering
+            berbuat salah dalam hal apapun.
+        </p>
+
+        <p>
+            Aku minta maaf akan ketidaksempurnaan itu.
+
+            Aku akan selalu berusaha untuk menjadi
+            versi terbaikku, dan aku pun akan selalu
+            mencintaimu dalam versi manapun.
+        </p>
+
+        <p>
+            <b>
+                Karena orang yang aku pilih itu KAMU 🩵
+            </b>
+        </p>
+
+        <p>
+            Semoga hari yang kamu jalani selalu baik,
+            dari segi apapun🌷
+        </p>
+
+        <div style="font-size:30px;">
+            🥰 🩵 🌸
+        </div>
+
+    </div>
+
+    <div class="small">
+        dari Reni Intan Nuraini ✨
+    </div>
+
+</div>
+
+<script>
+
+function openMessage() {
+
+    document
+        .getElementById("opening")
+        .style.display = "none";
+
+    document
+        .getElementById("openedEnvelope")
+        .style.display = "block";
+
+    document
+        .getElementById("message")
+        .style.display = "block";
+
+    const sound =
+        document.getElementById("sound");
+
+    sound.currentTime = 0;
+
+    sound.play();
+
+    startRain();
+
+}
+
+function createHeart() {
+
+    let heart =
+        document.createElement("div");
+
+    heart.className =
+        "heart";
+
+    let hearts = [
+        "💙",
+        "🩵",
+        "💧",
+        "💙",
+        "🩵",
+        "💧"
+    ];
+
+    heart.innerHTML =
+        hearts[
+            Math.floor(
+                Math.random()
+                * hearts.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 14)
+        + "px";
+
+    let duration =
+        5 + Math.random() * 5;
+
+    heart.style.animationDuration =
+        duration + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
+
+}
+
+function startRain() {
+
+    setInterval(() => {
+        createHeart();
+    }, 300);
+
+}
+
+</script>
+
+</body>
+</html>
