@@ -71,7 +71,7 @@ body {
 }
 
 /* =========================
-   HATI BIRU BACKGROUND
+   GELEMBUNG + LUMBA-LUMBA LAUT
 ========================= */
 
 .bg-hearts {
@@ -84,32 +84,61 @@ body {
 
 .bg-heart {
     position: absolute;
-    bottom: -40px;
-    color: #73cbed;
+    bottom: -50px;
     opacity: 0;
-    animation: floatHeart linear forwards;
+    animation: floatSea linear forwards;
+    will-change: transform, opacity;
 }
 
-@keyframes floatHeart {
+/* Gelembung dan lumba-lumba bergerak naik */
+@keyframes floatSea {
 
     0% {
-        transform: translateY(0) scale(.7);
+        transform:
+            translateY(0)
+            translateX(0)
+            scale(.7);
+
         opacity: 0;
     }
 
     15% {
-        opacity: .55;
+        opacity: .65;
+    }
+
+    35% {
+        transform:
+            translateY(-30vh)
+            translateX(15px)
+            scale(.9);
+
+        opacity: .7;
+    }
+
+    60% {
+        transform:
+            translateY(-60vh)
+            translateX(-15px)
+            scale(1);
+
+        opacity: .65;
     }
 
     80% {
-        opacity: .55;
+        transform:
+            translateY(-85vh)
+            translateX(12px)
+            scale(1.1);
+
+        opacity: .5;
     }
 
     100% {
         transform:
-            translateY(-110vh)
-            scale(1.2)
-            rotate(15deg);
+            translateY(-115vh)
+            translateX(-10px)
+            scale(1.2);
+
         opacity: 0;
     }
 }
@@ -417,7 +446,7 @@ p {
 ========================= */
 
 .message-card {
-    background: rgba(255,255,255,.75);
+    background: rgba(255,255,255,.60);
 
     padding: 25px 20px;
 
@@ -495,7 +524,7 @@ p {
             💌
         </div>
 
-        <h1>Hallo kamu! 🩵</h1>
+        <h1>Hallo Sabila!</h1>
 
         <p>
             Ada sesuatu yang sebenarnya<br>
@@ -515,15 +544,15 @@ p {
 
     <div class="page hidden" id="gamePage">
 
-        <h2>🩵 Sebelum baca pesannya...</h2>
+        <h2>Sebelum baca pesannya...</h2>
 
         <p class="game-info">
-            Tangkap dulu <b>5 hati biru!</b> 💙
+            Tangkap dulu <b>8 ikan paus!</b> 🐳
         </p>
 
         <div class="score">
-            💙 Tertangkap:
-            <span id="score">0</span>/5
+            🐳 Tertangkap:
+            <span id="score">0</span>/8
         </div>
 
         <div class="game-area" id="gameArea">
@@ -552,14 +581,14 @@ p {
     <div class="page hidden" id="successPage">
 
         <div class="success-heart">
-            🩵
+            🐳
         </div>
 
         <h2>Yeay! Berhasil! 🎉</h2>
 
         <p>
             Kamu berhasil menangkap<br>
-            5 hati biru! 🥹💙
+            8 ikan paus! 🥹🐳
         </p>
 
         <p>
@@ -583,7 +612,7 @@ p {
         <h2>💌 Ada pesan untuk kamu...</h2>
 
         <p>
-            Klik amplopnya ya 🥺
+            Kencangkan volume dulu ya... 🥺
         </p>
 
         <div
@@ -602,7 +631,7 @@ p {
         </div>
 
         <p id="envelopeText">
-            🩵 Klik amplop untuk membuka
+             Klik amplop untuk membuka
         </p>
 
     </div>
@@ -620,35 +649,27 @@ p {
                 💌
             </div>
 
-            <h2>Untuk Kamu 🩵</h2>
+            <h2>Untuk Sabila</h2>
 
             <div class="message">
+hai bill, ada beberapa hal yang mau aku sampaikan sama kamu.
 
-Hallo kamu! 🥺🩵
+Pertama makasih ya udah mau temenan sama aku sampai semester akhir ini, banyak cerita dan momen yang sudah kita dan temen lain juga jalanin. Ga kerasa udah beres juga semester akhir ini yang dar der dor.
 
-Ada sesuatu yang sebenarnya
-sudah lama ingin aku bilang.
+Yang kedua aku mau mintaa maaf kalo aku ada salah ntah itu dari perbuatan atau dari tingkah laku yang bikin kamu sakit hati. Aku juga mau mintaa maaf kalo misal aku kurang baik jadi temen kamu, tidak sesuai ekspektasi kamu.
 
-Terima kasih karena sudah hadir
-dan menjadi seseorang yang begitu
-berarti.
+Aku ngerasa kalo aku sama kamu kurang deket banget aku juga jarang cerita perihal problem atau kabar baik yang aku hadapi, aku juga emang jarang curhat si hehe. Aku seneng temenan sama kamu, jalanin kuliah bareng sampai akhirnya kita sama sama lulus tepat waktu.
 
-Mungkin kata-kata ini sederhana,
-tapi aku benar-benar berharap
-kamu tahu...
+Tetep menjadi bila yang menyenangkan yaa.
 
-Kamu itu spesial. 🥹🩵
+Dimanapun, kapanpun serta bagaimana pun nanti semoga Tuhan selalu menyertaimu.
 
-Semoga setelah membaca pesan ini,
-kamu tersenyum sedikit ya.
-
-Karena senyummu juga salah satu
-hal yang aku suka. 💙
+Bye bil see u 🩵
 
             </div>
 
             <div class="signature">
-                Dari seseorang yang menyayangimu 🩵
+                Dari Reni Intan Nuraini
             </div>
 
         </div>
@@ -696,32 +717,48 @@ const bgHearts =
 
 function createBackgroundHeart(){
 
-    const heart =
+    const seaObject =
         document.createElement("div");
 
-    heart.className = "bg-heart";
+    seaObject.className = "bg-heart";
 
-    heart.innerText = "🩵";
+    // Lebih banyak gelembung,
+    // sesekali muncul lumba-lumba
+    if(Math.random() < 0.75){
 
-    heart.style.left =
+        seaObject.innerText = "🫧";
+
+        seaObject.style.fontSize =
+            (14 + Math.random() * 22) + "px";
+
+    } else {
+
+        seaObject.innerText = "🐬";
+
+        seaObject.style.fontSize =
+            (25 + Math.random() * 15) + "px";
+
+    }
+
+    seaObject.style.left =
         Math.random() * 100 + "%";
 
-    heart.style.fontSize =
-        (12 + Math.random() * 18) + "px";
+    seaObject.style.animationDuration =
+        (8 + Math.random() * 7) + "s";
 
-    heart.style.animationDuration =
-        (6 + Math.random() * 7) + "s";
+    seaObject.style.animationDelay =
+        Math.random() * 1.5 + "s";
 
-    bgHearts.appendChild(heart);
+    bgHearts.appendChild(seaObject);
 
     setTimeout(() => {
-        heart.remove();
-    }, 14000);
+        seaObject.remove();
+    }, 16000);
 }
 
 setInterval(
     createBackgroundHeart,
-    500
+    600
 );
 
 
@@ -804,7 +841,7 @@ function spawnHeart(){
     heart.className =
         "falling-heart";
 
-    heart.innerText = "💙";
+    heart.innerText = "🐳";
 
     const maxX =
         gameArea.clientWidth - 40;
@@ -817,7 +854,7 @@ function spawnHeart(){
     let y = -45;
 
     const speed =
-        2.5 + Math.random() * 2;
+    1.5 + Math.random() * 1;
 
     function fall(){
 
@@ -896,7 +933,7 @@ function checkCatch(
             .getElementById("score")
             .innerText = score;
 
-        if(score >= 5){
+        if(score >= 8){
 
             finishGame();
         }
